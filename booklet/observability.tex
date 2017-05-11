@@ -1,0 +1,128 @@
+\section{Observability}
+In this section the nonlinear \emph{local} observability of the system is discussed.
+The concept of local observability can be explained in terms of the indistinguishability
+between a given \emph{initial} state $\bar{\vec{x}}$ and another initial state ``near'' $\bar{\vec{x}}$ namely
+$\bar{\vec{x}} + \vec{\delta x}$.
+\par
+The initial states $\bar{\vec{x}}$ and $\bar{\vec{x}} + \vec{\delta x}$ are said to be
+indistinguishable in the interval $[0, T]$ if for every input $\vec{u}$ the outputs
+$\vec{y(\bar{\vec{x}}, \vec{u}, t)} = \vec{y(\bar{\vec{x}} + \vec{\delta x}, \vec{u}, t)}$
+for every $t \in [0, T]$.
+\par
+Local indistinguishability can be assessed using appropriate tools from the theory
+of nonlinear systems and in some cases using the theory of LTI systems as explained
+in the following.
+
+\subsection{Linear Observability}
+In order to study the local indistinguishability between two initial states using the theory of LTI systems
+the following theorem can be used.
+\begin{theorem}
+  Consider a nonlinear system 
+  \[
+  \begin{cases}
+    \dot{\vec{x}} = \vec{f}(\vec{x}, \vec{u})\\
+    \vec{y} = \vec{h}(\vec{x}, \vec{u})
+  \end{cases}
+  \]
+  and an equilibrium point $\vec{x}_{eq}$ such that $\vec{f}(\vec{x}_{eq}, \vec{0}) = \vec{0}$.
+  If the linear approximation of the system around the point $\vec{x}_{eq}$ is completely
+  observable then there are no indistinguishable points from $\vec{x}_{eq}$ in a small enough
+  neighbourhood of $\vec{x}_{eq}$.
+\end{theorem}
+It is recalled that a linear system
+\[
+\dot{\vec{\delta x}} = A \vec{\delta x} + B \vec{\delta u}
+\]
+\[
+\dot{\vec{\delta y}} = C \vec{\delta x}
+\]
+where
+\[
+\vec{\delta x}(t) = \vec{x}(t) - \vec{x}_{eq} \quad \vec{\delta u}(t) = \vec{u}(t) - \vec{u}_{eq} \quad
+\vec{\delta y}(t) = \vec{y}(t) - \vec{h}(\vec{x}_{eq}, \vec{u}_{eq})
+\]
+is observable if the rank of the observability matrix $R_o$ 
+\begin{equation} \label{eq:linear_observability}
+R_o = 
+\begin{bmatrix}
+C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1}
+\end{bmatrix}
+\end{equation}
+is equal to the dimension of the state $n$.
+\par
+For the system of equations (\ref{eq:nl_eq_2}) and (\ref{eq:output}) it can be found that the linear approximation
+around each equilibrium point belonging to $\mathcal{E}_{1}$ is not completely observable and
+the matrix $R_o$ has rank $6 < n = 9$. As a consequence it is not possible to conclude on
+the local indistinguishability relative to those points.
+
+\subsection{Nonlinear Observability}
+As done for the nonlinear local controllability the definition of local
+indistinguishability should be refined with the requirement that
+the inputs $\vec{u}$ are such that the state trajectory never goes outside of
+a neighbourhood of the initial states for every $t \in [0, T]$.
+The notation used to denote two indistinguishable initial states $\bar{\vec{x}}_1$
+and $\bar{\vec{x}}_2$ in the interval $[0,T]$ is
+\[
+\bar{\vec{x}}_1 I^{U}_{T} \bar{\vec{x}}_2
+\]
+where $U \subseteq \{\vec{u}(\cdot):[0,T] \rightarrow \mathbb{R}^{m}\}$ contains
+input functions which satisfy the hypothesis given above.
+\par
+In order to study the nonlinear locally indistinguishability of a system written in control affine form
+\begin{equation}\label{eq:nonlinear_system_outputs}
+  \begin{cases}
+    \dot{\vec{x}} = \vec{f}(\vec{x}) + g(\vec{x}) \vec{u}\\
+    \vec{y} = \vec{h}(\vec{x}, \vec{u})
+  \end{cases}
+\end{equation}
+the codistribution
+\[
+\mathrm{\Omega}_0 = \mathrm{span} \{ d \vec{h}\}
+\]
+and the distribution
+\[
+\mathrm{\Delta}= \mathrm{span} \{\vec{f},\enspace\vec{g}_1, \enspace \hdots \enspace, \vec{g}_m\}
+\]
+have to be considered. The following theorem holds
+\begin{theorem}\label{th:obs}
+  Consider the smallest $\mathrm{\Delta}$-invariant codistribution containing $\mathrm{\Omega}_0$ called
+  observability codistribution $< \mathrm{\Delta} | d\vec{h} >$.
+  \begin{itemize}
+  \item[a.]If the dimension of $< \mathrm{\Delta}|d\vec{h} >$ is equal to $n$ in $\bar{\vec{x}}$ then
+    there are no initial states ``near'' $\bar{\vec{x}}$ that are indistinguishable from
+    it and the system (\ref{eq:nonlinear_system_outputs}) is said locally observable in $\bar{\vec{x}}$;
+  \item[b.]If $\text{dim}(< \Delta|\Omega_0 >) = d < n$ in a neighbourhood of $\bar{\vec{x}}$ then
+    the $(n-d)$-dimensional distribution $< \Delta|\Omega_0 >^{\perp}$ that annihilates
+    the observability codistribution is involutive. Clearly such distribution evaluated at $\bar{\vec{x}}$
+    identifies the displacements $\vec{\delta{x}}$ such that $\bar{\vec{x}} I^{U}_{T}(\bar{\vec{x}} + \vec{\delta x})$
+  \end{itemize}
+\end{theorem}
+\par
+In order to evaluate the observability codistribution for the system under examination
+(equations \ref{eq:nl_eq_2} and \ref{eq:output}) the following filtration of codistributions
+\[
+\begin{cases}
+\Omega_1 &= \Omega_0 + L_\Delta \Omega_0\\
+&\vdotswithin{=} \\
+\Omega_k &= \Omega_{k-1} + L_\Delta \Omega_{k-1}
+\end{cases}
+\]
+was performed until an integer $k$ was found such that
+\[
+\mathrm{dim}(\Delta_{k}(\bar{\vec{x}})) = \mathrm{dim}(\Delta_{k + 1}(\bar{\vec{x}}))
+\]
+\par
+It turns out that for all $\bar{\vec{x}} \in \mathcal{E}_{1}$, i.e.,the cubic frame
+is standing still in the upright configuration with zero flywheel velocities,
+\[
+\mathrm{dim} (<\mathrm{\Delta},d\vec{h}>) = 6 < n = 9
+\]
+but the codistribution is not regular, i.e., the dimension is not constant in a neighbourhood
+of a given $\bar{\vec{x}} \in \mathcal{E}_{1}$ hence the theorem (\ref{th:obs}) cannot be applied.
+Conversely any given initial state in which the cubic frame is standing still in the upright
+configuration with \emph{non zero angular rates} gives
+\[
+\mathrm{dim} (<\mathrm{\Delta},d\vec{h}>) = n
+\]
+hence the system is locally observable in those points.
+\newpage

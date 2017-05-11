@@ -1,0 +1,148 @@
+\section{Controllability}
+In this section the nonlinear \emph{local} controllability of the system is discussed.
+\par
+A nonlinear system is locally controllable in a point $\vec{x}_0$ if there exists
+a neighbourhood $B_\epsilon (\vec{x}_0)$ such that for every point $\vec{x}_f$
+in that neighbourhood a control law $\vec{u}(t)$ exists such that  $\vec{x}(T, \vec{x}_0, \vec{u}) = \vec{x}_f$.
+If $T$ can be arbitrarily small then the system is defined as locally
+controllable in small-time from $\vec{x}_{0}$.
+\par
+Local controllability can be assessed using tools taken from  differential geometry of manifolds
+and Lie algebras. However LTI theory can also be used in some special cases that are described
+in the following.
+
+\subsection{Linear controllability}
+In order to study the local controllability of nonlinear systems using the theory of LTI systems
+the following theorem can be used.
+\begin{theorem}
+  Consider a nonlinear system $\dot{\vec{x}} = \vec{f}(\vec{x}, \vec{u})$ and an equilibrium point $\vec{x}_{eq}$
+  such that $\vec{f}(\vec{x}_{eq}, \vec{0}) = \vec{0}$. If the linear approximation of the system around
+  the point $\vec{x}_{eq}$ is completely controllable then the system is small-time locally controllable
+  in $\vec{x}_{eq}$.
+\end{theorem}
+It is recalled that a linear system
+\[
+\dot{\vec{\delta x}} = A \vec{\delta x} + B \vec{\delta u}
+\]
+where
+\[
+\vec{\delta x}(t) = \vec{x}(t) - \vec{x}_{eq} \quad \vec{\delta u}(t) = \vec{u}(t) - \vec{u}_{eq}
+\]
+is completely controllable if the rank of the controllability matrix $R_c$ 
+\begin{equation}
+R_c = 
+\begin{bmatrix}
+B & AB & A^2B & \dots & A^{n-1}B
+\end{bmatrix}
+\end{equation}
+is equal to the dimension of the state $n$.
+\par
+For the system of equations (\ref{eq:nl_eq_2}) it can be found that the linear approximation
+around each equilibrium point belonging to $\mathcal{E}_{1}$ is not completely controllable.
+Indeed the controllability matrix has rank $8 < n = 9$ for every $\vec{x}_{eq} \in \mathcal{E}_1$
+hence it is not possible to conclude on the small-time local controllability of the system
+in those points.
+\par
+As an aside is interesting to study the stabilizability of the linear approximation.
+Using the Control System Toolbox from MATLAB a change of coordinates can be found such that
+\[
+\dot{\vec{\delta z}} = \bar{A} \vec{\delta z} + \bar{B} \vec{\delta u}
+\]
+where
+\[
+\bar{A} =TAT\transpose = 
+\begin{bmatrix}
+  A_{uc} & 0\\
+  A_{21} & A_c
+\end{bmatrix}
+\]
+\[
+\bar{B} =TB = 
+\begin{bmatrix}
+0\\
+B_c
+\end{bmatrix}
+\]
+and $T$ is an unitary matrix. For the system under investigation
+$A_{uc} = 0$, i.e., the uncontrollable eigenvalue is $0$ with algebraic multiplicity one
+hence the system is stabilizable with a control law of the form $\vec{\delta u} = K \vec{\delta x}$
+for some appropriate constant matrix $K$. Using arguments based on the theory of Lyapunov stability
+it can be also conluded that the nonlinear system of equations (\ref{eq:nl_eq_2}) subjected to the same
+control law has a \emph{stable} point of equilibrium at $\vec{x}_{eq} \in \mathcal{E}_{1}$.
+
+\subsection{Nonlinear local accessibility}
+Local controllability of nonlinear systems is a quite difficult property to be verified.
+For this reason a different definition of local controllability is used in which,
+in addition, is required that the trajectory from the initial point $\vec{x}_0$ to the
+final point $\vec{x}(T)$ never goes outside of a small neighbourhood $V(\vec{x}_0)$.
+To be more precise a set $R_{T}^{V}(\vec{x}_0)$ is defined
+\[
+R_{T}^{V}(\vec{x}_0) = \{\vec{x}(\vec{x_0}, T, \bar{\vec{u}}(t)) \mid
+\vec{x}(\vec{x_0}, \tau, \bar{\vec{u}}(t)) \in V(\vec{x}_0) \enspace \forall \tau \in [0,T]\}
+\]
+Then a nonlinear system is said locally-locally controllable (l.l.c.) from $\vec{x}_0$ if,
+for any arbitrarily small neighbourhood $V(\vec{x}_0)$ there exists $T$ such that
+$R_{T}^{V}(\vec{x}_0)$ contains an open neighbourhood of $\vec{x}_0$.
+Again if the time $T$ can be arbitrarily small the system is said
+small time locally controllable (s.t.l.c.).
+\par
+In some cases however $R_{T}^{V}(\vec{x}_0)$ only contains an open set of $\vec{x}_0$
+and the definition of small-time local controllability becomes small-time local accessibility
+(s.t.l.a). It should be noted that s.t.l.c implies s.t.l.a but the converse does not hold.
+\par
+In order to study the small-time locally accessibility of a system written in control affine form
+\begin{equation}\label{eq:nonlinear_system}
+\dot{\vec{x}} = \vec{f}(\vec{x}) + g(\vec{x}) \vec{u}
+\end{equation}
+the distributions
+\[
+\mathrm{\Delta}_0 = \mathrm{span} \{\vec{g}_1, \enspace \hdots \enspace, \vec{g}_m\} \quad
+\]
+\[
+\mathrm{\Delta} = \mathrm{span} \{\vec{f},\enspace\vec{g}_1, \enspace \hdots \enspace, \vec{g}_m\}
+\]
+have to be considered. The following theorem from Chow holds
+\begin{theorem}
+  Consider the smallest $\mathrm{\Delta}$-invariant distribution containing $\mathrm{\Delta}_0$ called
+  accessibility distribution $<\mathrm{\Delta}|\mathrm{\Delta}_0>$.
+  \begin{itemize}
+  \item[a.]If the dimension of $<\mathrm{\Delta}|\mathrm{\Delta}_0>= n$ in $\vec{x}_0$, then system (\ref{eq:nonlinear_system})
+    is s.t.l.a in $\vec{x}_{0}$;
+  \item[b.]If $\mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}_0>)= r < n$ in a neighbourhood of $\vec{x}_0$
+    then the set $R_{T}^{V}(\vec{x}_0)$ is contained in a submanifold of dimension $r$ of the
+    $n$-dimensional state space, and contains an open set in that submanifold.
+  \end{itemize}
+\end{theorem}
+In order to evaluate the accessibility distribution for the system under examination
+(equation \ref{eq:nl_eq_2}) the following filtration of distributions
+\[
+\begin{cases}
+\mathrm{\Delta}_1 &= \mathrm{\Delta}_0 + [\mathrm{\Delta}_0,\mathrm{\Delta}]\\
+&\vdotswithin{=} \\
+\mathrm{\Delta}_k &= \mathrm{\Delta}_{k-1} + [\mathrm{\Delta}_{k-1},\mathrm{\Delta}]
+\end{cases}
+\]
+was performed until an integer $k$ was found such that
+\[
+\text{dim}(\mathrm{\Delta}_{k}(\vec{x}_0)) = \text{dim}(\mathrm{\Delta}_{k+1}(\vec{x}_0))
+\]
+It turns out that for all $\vec{x}_{0} \in \mathcal{E}_{1}$
+\[
+\mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}_0>) = 8 < n = 9
+\]
+Hence $R_{T}^{V}(\mathcal{E}_{1})$ is containted in a submanifold of dimension $8$.
+\par
+Although the system is not s.t.l.a in the points of interest it could be local accessible
+in a weaker sense, i.e., without the requirement that the time $T$ is arbitrarily small.
+A \emph{necessary} condition for weak local accessibility is that the dimension of the smallest
+$\mathrm{\Delta}$-invariant distribution containing $\mathrm{\Delta}$ is equal to $n$.
+For the system under examination it can be found that
+\[
+\mathrm{dim} <\mathrm{\Delta},\mathrm{\Delta}> = 8 < n = 9
+\]
+for every $\vec{x}_0 \in \mathcal{E}_1$.
+\par
+In conclusion, at least for the equilibria that belong to $\mathcal{E}_1$, the
+system is not locally accessible in any sense hence it can't be locally controllable.
+
+\newpage

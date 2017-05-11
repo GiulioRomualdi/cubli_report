@@ -1,0 +1,61 @@
+\documentclass[tikz,14pt,border=10pt]{standalone}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{fixmath}
+\usepackage{siunitx} 
+
+\usepackage{cancel} 
+
+\usepackage{graphicx}
+
+\usepackage{verbatim}
+\usepackage{textcomp}
+\usetikzlibrary{arrows,positioning}
+
+\newcommand{\unitvec}[1]{\hat{\mathbold{#1}}}
+
+\begin{document}
+
+\tikzset{
+  coords/.style = {coordinate},
+  block/.style    = {draw, thin, rectangle, minimum height = 6.4em,
+    minimum width = 7em},
+  frame/.style   = {coordinate},
+  arrow/.style={thick, ->, >=stealth'}
+}
+
+\begin{tikzpicture}
+  \begin{scope}[transparency group, opacity=0.5]
+    \node[anchor=south west,inner sep=0, name=image] at (0,0) {\includegraphics[width=\textwidth]{cubli.png}};
+  \end{scope}
+  \node[coords, name=origin]{};
+
+  \node[frame, above right = 0.65cm and 6.1cm of origin](O_c){};
+  \node[frame, above right = 3.71cm and 1.4cm of origin](x_c){};
+  \node[frame, above right = 4 and 11.0cm of origin](y_c){};
+
+  \node[frame, above right = 3.5cm and 6.1cm of origin](vers_z0){};
+  \node[frame, above right = 4.2cm and 6.1cm of origin](vers_zf){};
+
+  \node[frame, above right = 6cm and 8cm of origin](vers_x0){};
+  \node[frame, above right = 6.8cm and 7cm of origin](vers_xf){};
+
+  \node[frame, above right = 5.7cm and 4cm of origin](vers_y0){};
+  \node[frame, above right = 6.5cm and 5cm of origin](vers_yf){};
+
+
+  \begin{scope}[transparency group, opacity=0.9]
+    \node[above right = 0.3cm and 6.2cm of origin](O_c_text){$O_c = O_s$};
+    \draw[arrow](O_c) -- node [pos=1, below = 0.05cm of x_c]{\Large $x_c$}(x_c);
+    \draw[arrow](O_c) -- node [pos=1, below = 0.05cm of y_c]{\Large $y_c$}(y_c);
+
+    \draw[arrow](vers_z0) -- node [pos=1, below right = 0.05cm and 0cm of vers_z0]{\Large $\unitvec{k}_c$}(vers_zf);
+    %% \draw[arrow](vers_x0) -- node [pos=1, below right = -0.2cm and 0.3cm of vers_x0]{\Large $\unitvec{x}_c$}(vers_xf);
+    %% \draw[arrow](vers_y0) -- node [pos=1, below right = -0.35cm and -0.9cm of vers_y0]{\Large $\unitvec{y}_c$}(vers_yf);
+
+  \end{scope}
+\end{tikzpicture}
+
+\end{document}
