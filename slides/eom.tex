@@ -9,7 +9,7 @@
   \vskip-0.1in
   \begin{columns}
     \begin{column}{0.55\textwidth}
-      \includegraphics[width=\columnwidth]{cubli}
+      \includegraphics[width=\columnwidth]{cubli.pdf}
     \end{column}
     \begin{column}{0.6\textwidth}
       \begin{block}{Attitude}
@@ -266,6 +266,25 @@
 \end{frame}
 
 \begin{frame}{Equations in control affine form}
+  \begin{block}{State space vector}
+  \[
+  \tilde{\vec{x}} =
+  \begin{bmatrix}
+    \tilde{\vec{x}}_1\transpose & \tilde{\vec{x}}_2\transpose
+  \end{bmatrix}\transpose
+  \]
+  \[
+  \tilde{\vec{x}}_1 = 
+  \begin{bmatrix}
+    \theta_1 & \theta_2 & \theta_3 & q_x & q_y & q_z
+  \end{bmatrix}
+  \enspace
+  \tilde{\vec{x}}_2 = 
+  \begin{bmatrix}
+    \dot{\theta}_1 & \dot{\theta}_2 & \dot{\theta}_3 & \dot{q}_x & \dot{q}_y & \dot{q}_z
+  \end{bmatrix}
+  \]
+  \end{block}
   \[
   \begin{split}
     \dot{\tilde{\vec{x}}} &= 
@@ -312,15 +331,9 @@
     \end{bmatrix} \transpose
   \end{cases}
   \]
+  where
   \[
-  \begin{split}
-    \dot{\vec{x}} &= \vec{f}(\vec{x}) + g(\vec{x})\vec{u}\\
-    &=\vec{f}(\vec{x}) +
-    \begin{bmatrix}
-      0_{3\times3} \\
-      \left(B(\theta_2,\theta_3) ^ {-1}\right)_{(:, 4:6)}
-    \end{bmatrix}\vec{u}\\
-  \end{split}
+  g(\vec{x}) = \left(B(\theta_2,\theta_3) ^ {-1}\right)_{(:, 4:6)}
   \]
 \end{frame}
 
