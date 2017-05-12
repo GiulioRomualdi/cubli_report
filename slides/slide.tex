@@ -20,6 +20,8 @@
 \usepackage{mathtools}
 \usepackage{multimedia}
 \usepackage{media9}
+\usepackage{centernot}
+\usepackage{amsthm}
 
 \graphicspath{ {figures/} }
 
@@ -36,9 +38,9 @@
 \newcommand{\qy}[1]{{\color{green}#1}}
 \newcommand{\qz}[1]{{\color{blue}#1}}
 
-\date{10/05/2017}
+\date{17/05/2017}
 
-\title[]{Title}
+\title[]{Controllability, observability and Noninteracting control of the Cubli}
 \subtitle{Corso di LM in Ingegneria Robotica ed Automazione \\
   Controllo dei Robot}
 \author{Students:\hfill Supervisors:\\
@@ -71,6 +73,9 @@ Giulio Romualdi \hfill Ing. Manuel Bonilla}
   %% \end{columns}
 \end{frame}
 
+\input{intro.tex}
 \input{eom.tex}
+\input{controllability.tex}
+\input{observability.tex}
 
 \end{document}
