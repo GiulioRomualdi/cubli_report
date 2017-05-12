@@ -63,13 +63,17 @@ where
 B_c
 \end{bmatrix}
 \]
-and $T$ is an unitary matrix. For the system under investigation
-$A_{uc} = 0$, i.e., the uncontrollable eigenvalue is $0$ with algebraic multiplicity one
-hence the system is stabilizable with a control law of the form $\vec{\delta u} = K \vec{\delta x}$
-for some appropriate constant matrix $K$. Using arguments based on the theory of Lyapunov stability
-it can be also conluded that the nonlinear system of equations (\ref{eq:nl_eq_2}) subjected to the same
-control law has a \emph{stable} point of equilibrium at $\vec{x}_{eq} \in \mathcal{E}_{1}$.
-
+and $T$ is an unitary matrix. %% For the system under investigation
+%% $A_{uc} = 0$, i.e., the uncontrollable eigenvalue is $0$ with algebraic multiplicity one
+%% hence the system is stabilizable with a control law of the form $\vec{\delta u} = K \vec{\delta x}$
+%% for some appropriate constant matrix $K$. Using arguments based on the theory of Lyapunov stability
+%% it can be also conluded that the nonlinear system of equations (\ref{eq:nl_eq_2}) subjected to the same
+%% control law has a \emph{stable} point of equilibrium at $\vec{x}_{eq} \in \mathcal{E}_{1}$.
+For the system under investigation $A_{uc} = 0$, i.e., the uncontrollable eigenvalue is $0$ with algebraic
+multiplicity one hence the uncontrollable part of the system is not asymptotically stable and the system
+is not stabilizable. However is still possible to find control law of the form $\vec{\delta u} = K \vec{\delta x}$
+which asymptotically stabilize the controllable part of the system resulting in a overall neutrally stable
+closed loop system.
 \subsection{Nonlinear local accessibility}
 Local controllability of nonlinear systems is a quite difficult property to be verified.
 For this reason a different definition of local controllability is used in which,
