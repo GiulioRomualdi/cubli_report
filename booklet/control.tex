@@ -424,8 +424,8 @@ of the flywheels, can be written as
 
 \subsection{Results of simulation}
 In the following figures the results of the simulation done
-in MATLAB Simulink are presented. The desired trajectory, corresponding to a rotation about the $z$ axis of the inertial
-reference frame $\{S\}$ while the balance on one of the corner is maintained, was chosen as
+in MATLAB Simulink are presented.
+The desired trajectory was chosen as
 \[
 \theta_1^{des}(t) = a_0 + a_1 t + a_2 t^2 + a_3 t^3 + a_4 t^4 + a_5 t^5
 \]
@@ -445,6 +445,8 @@ and
 \[
 \theta_3^{des}(t) \equiv \frac{\pi}{4}
 \]
+Such a trajectory corresponds to a rotation about the $z$ axis of the inertial
+reference frame $\{S\}$ while the balance on one of the corner is maintained.
 The resulting control law is
 \begin{equation}\label{eq:PD_yaw}
   \begin{split}
@@ -453,9 +455,9 @@ The resulting control law is
     &v_3(t) = - k_d\dot{\theta}_3(t) + k_p \left(\frac{\pi}{4} - \theta_3(t)\right)
   \end{split}
 \end{equation}
-It should be noted that the initial state $\vec{x}(0)$ and the final state $\vec{x}(t_{f})$
-corresponding to the desired trajectory belong to the set of equilibria $\mathcal{E}_{1}$ provided that
-the velocities of the flywheels are zero in $t=0$ and $t=t_{f}$.
+%% It should be noted that the initial state $\vec{x}(0)$ and the final state $\vec{x}(t_{f})$
+%% corresponding to the desired trajectory belong to the set of equilibria $\mathcal{E}_{1}$ provided that
+%% the velocities of the flywheels are zero in $t=0$ and $t=t_{f}$.
 \par
 In figure \ref{fig:orientation_error} the orientation error is shown while
 in figure \ref{fig:requested_torques} the required torques are shown.
