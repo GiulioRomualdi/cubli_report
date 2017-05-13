@@ -280,7 +280,10 @@
   \]
 \end{frame}
 
-\begin{frame}{Results ($k_p = 10$, $k_d = 0.1$)}
+\begin{frame}{Results}
+  \[\theta_1^{des} = \SI{0}{\degree} \rightarrow \theta_1^{des}(2) = \SI{100}{\degree}
+  \rightarrow \theta_1^{des}(4) = \SI{0}{\degree}\]
+  \[k_p = 10 \enspace k_d = 0.1\]
   \begin{center}
     \includemedia[
       activate=pageopen,
@@ -294,7 +297,7 @@
 \end{frame}
 
 \begin{frame}{Results (continued)}
-  As shown in the video the flywheel velocities $\vec{\eta}(t)$ which are
+  The flywheel velocities $\vec{\eta}(t)$ which are
   solution to the differential equation
   \[
   \begin{cases}
@@ -311,17 +314,42 @@
 \begin{frame}{Use of an alternative Euler parametrization}
 \end{frame}
 
-\begin{frame}{Results ($k_p = 2500$, $k_d = 50$)}
-  \centering
-  \includegraphics[scale=0.4]{error_lqr}
-  \includegraphics[scale=0.4]{input_lqr}
-\end{frame}
-
 \begin{frame}{Results}
-  \centering
-  \includegraphics[scale=0.6]{fly_wheel_lqr}
+  \vskip0.1in
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+      \item[-]$k_p = 2500$, $k_d = 50$
+      \item[-]rotation of $\SI{180}{\degree}$ in $\SI{4}{\second}$
+      \item[-]LQR control actived at $t = \SI{5}{\second}$ 
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{error_lqr}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{fly_wheel_lqr}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{input_lqr}
+    \end{column}
+  \end{columns}
 \end{frame}
 
+%% \begin{frame}{Results ($k_p = 2500$, $k_d = 50$)}
+%%   \centering
+%%   \includegraphics[scale=0.4]{error_lqr}
+%%   \includegraphics[scale=0.4]{input_lqr}
+%% \end{frame}
+
+%% \begin{frame}{Results}
+%%   The LQR control is actived at $t = \SI{5}{\second}$
+%%   \par
+%%   \centering
+%%   \includegraphics[scale=0.6]{fly_wheel_lqr}
+%% \end{frame}
 
 \begin{frame}{Results}
   The outcome of the switch to the LQR controller
