@@ -212,7 +212,7 @@
   \begin{bmatrix}
     \theta_1 & \dot{\theta}_1 &  \theta_2 & \dot{\theta}_2 &
     \theta_3 & \dot{\theta}_3
-  \end{bmatrix}\tranpose
+  \end{bmatrix}\transpose
   \]
   The remaining part is chosen as
   \[
@@ -246,7 +246,7 @@
   \begin{center}
     \includemedia[
       activate=pageopen,
-      width=90pt,height=90pt,
+      width=200pt,height=200pt,
       addresource=videos/cubli_yaw_noerr.mp4,
       flashvars={%
         src=videos/cubli_yaw_noerr.mp4
@@ -288,9 +288,9 @@
     \includemedia[
       activate=pageopen,
       width=288pt,height=162pt,
-      addresource=videos/cubli_yaw.mp4,
+      addresource=videos/cubli_yaw_youtube.mp4,
       flashvars={%
-        src=videos/cubli_yaw.mp4
+        src=videos/cubli_yaw_youtube.mp4
         &scaleMode=stretch&autoPlay=true}
     ]{}{StrobeMediaPlayback.swf}
   \end{center}
@@ -312,6 +312,18 @@
 \end{frame}
 
 \begin{frame}{Use of an alternative Euler parametrization}
+  Using a different parametrization of the rotation matrix
+  \[
+  R_{SC}(\vec{\theta}) = R_x(\theta_1)R_y(\theta_2)R_z(\theta_3)
+  \]
+  the same results apply but the desired yaw motion requires to specify
+  all three angles using Slerp.
+  \par
+  However in this setup the unobservable part of the closed loop system, i.e.
+  the flywheels velocities, does not tend to zero. A possible solution is to switch
+  to a LQR based control after the rotation is completed to slow down the flywheels.
+  \par
+  This approach works if the flywheels velocities before the switch are not too high.
 \end{frame}
 
 \begin{frame}{Results}
