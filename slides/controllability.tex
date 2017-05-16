@@ -1,6 +1,6 @@
 \section{Controllability}
 
-\begin{frame}{Small time local controllability}
+\begin{frame}{Small time local controllability \theory}
   Given a point $\vec{x}_0$ and an arbitrarily small neighbourhood $V(\vec{x}_0)$ define the set
   \[
   R_{T}^{V}(\vec{x}_0) = \{\vec{x}(\vec{x_0}, T, \bar{\vec{u}}(t)) \mid
@@ -8,17 +8,17 @@
   \]
   with $\bar{\vec{u}}$ appropriate inputs
   \par
-  A nonlinear system $\dot{\vec{x}} = \vec{f}(\vec{x}, \vec{u})$ is said locally-locally controllable (l.l.c.) from $\vec{x}_0$ if
+  A nonlinear system $\dot{\vec{x}} = \vec{f}(\vec{x}, \vec{u})$ is said \alert{locally-locally controllable} (l.l.c.) from $\vec{x}_0$ if
   \[
   \forall \enspace V(\vec{x}_0) \enspace \exists  \enspace T \enspace
   s.t. \enspace R_{T}^{V}(\vec{x}_0) \enspace \supseteq \enspace B(\vec{x}_0)
   \]
   with $B(\vec{x}_0)$ an open neighbourhood
   \par
-  If the time $T$ can be arbitrarily small the system is said small time locally controllable (s.t.l.c.)
+  If the time $T$ can be arbitrarily small the system is said \alert{small time locally controllable} (s.t.l.c.)
 \end{frame}
 
-\begin{frame}{s.t.l.c and linear controllability}
+\begin{frame}{s.t.l.c and linear controllability \theory}
   \begin{theorem}
     Consider a nonlinear system $\dot{\vec{x}} = \vec{f}(\vec{x}, \vec{u})$ and an equilibrium point $\vec{x}_{eq}$
     such that $\vec{f}(\vec{x}_{eq}, \vec{0}) = \vec{0}$. If the linear approximation of the system around
@@ -27,8 +27,8 @@
   \end{theorem}
 \end{frame}
 
-\begin{frame}{Results}
-  For the system under examination the linear approximation
+\begin{frame}{s.t.l.c and linear controllability \cubli}
+  \begin{exampleblock}{Controllability of the linear approximation of the Cubli}
   \[
   \begin{split}
     \dot{\vec{\delta x}} &= \frac{\partial{\vec{f}(\vec{x},\vec{u})}}{\partial{\vec{x}}}\Big|_{\mathcal{E}_1} \vec{\delta x} +
@@ -36,7 +36,9 @@
     &= A \vec{\delta x} + B \vec{\delta u}
   \end{split}
   \]
-  is such that the pair $(A, B)$ is not completely controllable. Indeed
+  where $\vec{f}(\vec{x},\vec{u})$ does \alert{not} depend on $\theta_1$
+  \par
+  The pair $(A, B)$ is \alert{not} completely controllable. Indeed
   \[
   rank\left(
   \begin{bmatrix}
@@ -44,13 +46,14 @@
   \end{bmatrix}
   \right) = 8 < n = 9
   \]
-  It is not possible to conclude on the small-time local controllability of the system
+  \end{exampleblock}
+  It is \alert{not possible to conclude} on the small-time local controllability of the system
   in those points belonging to $\mathcal{E}_1$
 \end{frame}
 
-\begin{frame}{Small time local accessibility}
+\begin{frame}{Small time local accessibility \theory}
   If $R_{T}^{V}(\vec{x}_0)$ only contains an open set of $\vec{x}_0$
-  the small time local controllability becomes small-time local accessibility
+  the small time local controllability becomes \alert{small-time local accessibility}
   (s.t.l.a).
   \par
   \[
@@ -64,7 +67,7 @@
   \]
 \end{frame}
 
-\begin{frame}[shrink=10]{Small time local accessibility (continued)}
+\begin{frame}[shrink=10]{Small time local accessibility (continued) \theory}
   Consider a control affine system
   \[
   \dot{\vec{x}} = \vec{f}(\vec{x}) + \sum\limits_{j=1}^{m}\vec{g}_j(\vec{x}) u_{j}
@@ -77,10 +80,10 @@
   \]
   \begin{theorem}
     Consider the smallest $\mathrm{\Delta}$-invariant distribution containing $\mathrm{\Delta}_0$
-    called accessibility distribution $<\mathrm{\Delta}|\mathrm{\Delta}_0>$.
+    called \alert{accessibility distribution} $<\mathrm{\Delta}|\mathrm{\Delta}_0>$.
     \begin{itemize}
     \item[a.]If the dimension of $<\mathrm{\Delta}|\mathrm{\Delta}_0>= n$ in $\vec{x}_0$ then system
-      is s.t.l.a in $\vec{x}_{0}$;
+      is \alert{s.t.l.a in $\vec{x}_{0}$};
     \item[b.]If $\mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}_0>)= r < n$ in a neighbourhood of $\vec{x}_0$
       then the set $R_{T}^{V}(\vec{x}_0)$ is contained in a submanifold of dimension $r$ of the
       $n$-dimensional state space, and contains an open set in that submanifold.
@@ -88,8 +91,8 @@
   \end{theorem}
 \end{frame}
 
-\begin{frame}[shrink=10]{Results}
-  In order to evaluate $<\mathrm{\Delta}|\mathrm{\Delta}_0>$ for the system under examination
+\begin{frame}{Accessibility distribution \theory}
+  In order to evaluate $<\mathrm{\Delta}|\mathrm{\Delta}_0>$
   the following filtration of distributions
   \[
   \begin{cases}
@@ -98,34 +101,43 @@
     \mathrm{\Delta}_k &= \mathrm{\Delta}_{k-1} + [\mathrm{\Delta}_{k-1},\mathrm{\Delta}]
   \end{cases}
   \]
-  was performed using the Symbolic Math Toolbox from MATLAB until an integer $k$ was found s.t.
+  is performed until an integer $k$ is found s.t.
   \[
   \text{dim}(\mathrm{\Delta}_{k}(\vec{x}_0)) = \text{dim}(\mathrm{\Delta}_{k+1}(\vec{x}_0))
   \]
-  It turns out that for all $\vec{x}_{0} \in \mathcal{E}_{1}$ 
-  \[
-  \begin{split}
-    &k = 3\\
-    &\mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}_0>) = 8 < n = 9
-  \end{split}
-  \]
-  Hence $R_{T}^{V}(\mathcal{E}_{1})$ is containted in a submanifold of dimension $8$
-
 \end{frame}
 
-\begin{frame}{Weak local accessibility}
+\begin{frame}{Accessibility distribution \cubli}
+  \begin{exampleblock}{Accessibility distribution of the Cubli}
+    Using the Symbolic Math Toolbox from MATLAB it turns out that for all $\vec{x}_{0} \in \mathcal{E}_{1}$ 
+    \[
+    \begin{split}
+      &k = 3\\
+      &\mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}_0>) = 8 < n = 9
+    \end{split}
+    \]
+    Hence $R_{T}^{V}(\mathcal{E}_{1})$ is containted in a submanifold of dimension $8$
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Weak local accessibility \theory}
   Although the system is not s.t.l.a in the points of interest it could be local accessible
   in a weaker sense, i.e., without the requirement that the time $T$ is arbitrarily small.
-  \par
-  A \emph{necessary} condition for weak local accessibility is
-  \[
-  \mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}>) = n
-  \]
-  \par
-  For the system under examination however
-  \[
-  \mathrm{dim} <\mathrm{\Delta},\mathrm{\Delta}> = 8 < n = 9
-  \quad \forall \vec{x}_0 \in \mathcal{E}_1
-  \]
-  \alert{The system is not locally accessible in any sense hence it can't be locally controllable}
+  \begin{theorem}
+    A \alert{necessary} condition for weak local accessibility is
+    \[
+    \mathrm{dim}(<\mathrm{\Delta}|\mathrm{\Delta}>) = n
+    \]
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Weak local accessibility \cubli}
+  \begin{exampleblock}{Weak local accessibility of the Cubli}
+    Using the Symbolic Math Toolbox from MATLAB it turns out that
+    \[
+    \mathrm{dim} <\mathrm{\Delta} | \mathrm{\Delta}> = 8 < n = 9
+    \quad \forall \vec{x}_0 \in \mathcal{E}_1
+    \]
+    \alert{The system is not locally accessible in any sense hence it can't be locally controllable}
+  \end{exampleblock}
 \end{frame}

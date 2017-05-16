@@ -1,11 +1,11 @@
 \section{Observability}
 
-\begin{frame}{Local observability and indistinguishability}
-  The concept of local observability can be explained in terms of the indistinguishability
+\begin{frame}{Local observability and indistinguishability \theory}
+  The concept of \alert{local observability} can be explained in terms of the indistinguishability
   between two ``near'' \emph{initial} states $\bar{\vec{x}}$ and $\bar{\vec{x}} + \vec{\delta x}$.
   \par
   The initial states $\bar{\vec{x}}$ and $\bar{\vec{x}} + \vec{\delta x}$ are said to be
-  indistinguishable in the interval $[0, T]$ if
+  \alert{indistinguishable} in the interval $[0, T]$ if
   \[
   \vec{y}(\bar{\vec{x}}, \vec{u}, t) = \vec{y}(\bar{\vec{x}} + \vec{\delta x}, \vec{u}, t)\enspace
   \forall \vec{u} \in U \enspace \forall t \in [0,T]
@@ -17,7 +17,7 @@
 
 \end{frame}
 
-\begin{frame}{Local observability and linear controllability}
+\begin{frame}{Local observability and linear observability \theory}
   \begin{theorem}
     Consider a nonlinear system 
     \[
@@ -33,28 +33,31 @@
   \end{theorem}
 \end{frame}
 
-\begin{frame}{Results}
-  For the system under examination the linear approximation
-  \[
-  \begin{cases}
-    \dot{\vec{\delta x}} = \frac{\partial{\vec{f}(\vec{x},\vec{u})}}{\partial{\vec{x}}}\Big|_{\mathcal{E}_1} \vec{\delta x} +
-    \frac{\partial{\vec{f}(\vec{x},\vec{u})}}{\partial{\vec{u}}}\Big|_{\mathcal{E}_1} \vec{\delta u} = A \vec{\delta x} + B \vec{\delta u}\\
-    \vec{\delta y} = \frac{\partial{\vec{h}(\vec{x})}}{\partial{\vec{x}}}\Big|_{\mathcal{E}_1} \vec{\delta x}= C \vec{\delta x}
-  \end{cases}
-  \]
-  is such that the pair $(A, C)$ is not completely observable. Indeed
-  \[
-  rank\left(
-  \begin{bmatrix}
-    C \\ CA \\ CA^2 \\ \vdots \\ CA^{n-1}
-  \end{bmatrix}
-  \right) = 6 < n = 9
-  \]
-  It is not possible to conclude on the local observability of the system
+\begin{frame}[shrink = 10]{Local observability and linear observability \cubli}
+  \begin{exampleblock}{Observability of the linear approximation of the Cubli}
+    \[
+    \begin{cases}
+      \dot{\vec{\delta x}} = \frac{\partial{\vec{f}(\vec{x},\vec{u})}}{\partial{\vec{x}}}\Big|_{\mathcal{E}_1} \vec{\delta x} +
+      \frac{\partial{\vec{f}(\vec{x},\vec{u})}}{\partial{\vec{u}}}\Big|_{\mathcal{E}_1} \vec{\delta u} = A \vec{\delta x} + B \vec{\delta u}\\
+      \vec{\delta y} = \frac{\partial{\vec{h}(\vec{x})}}{\partial{\vec{x}}}\Big|_{\mathcal{E}_1} \vec{\delta x}= C \vec{\delta x}
+    \end{cases}
+    \]
+    where $\vec{f}(\vec{x},\vec{u})$ does \alert{not} depend on $\theta_1$
+    \par
+    The pair $(A, C)$ is \alert{not} completely observable. Indeed
+    \[
+    rank\left(
+    \begin{bmatrix}
+      C \\ CA  \\ \vdots \\ CA^{n-1}
+    \end{bmatrix}
+    \right) = 6 < n = 9
+    \]
+  \end{exampleblock}
+  It is \alert{not possible to conclude} on the local observability of the system
   in those points belonging to $\mathcal{E}_1$
 \end{frame}
 
-\begin{frame}{Nonlinear local observability}
+\begin{frame}[shrink = 10]{Nonlinear local observability \theory}
   \small
   Consider a control affine system, its outputs
   \[
@@ -66,9 +69,10 @@
   \]
   \begin{theorem}
     Consider the smallest $\mathrm{\Delta}$-invariant codistribution containing $\mathrm{\Omega}_0$ called
-    observability codistribution $< \mathrm{\Delta} | d\vec{h} >$.
+    \alert{observability codistribution} $< \mathrm{\Delta} | d\vec{h} >$.
+    \vskip-0.2in
     \begin{itemize}
-    \item[a.]If the dimension of $< \mathrm{\Delta}|d\vec{h} >$ is equal to $n$ in $\bar{\vec{x}}$ then
+    \item[a.]If the $\text{dim}(< \mathrm{\Delta}|d\vec{h} >) = n$ in $\bar{\vec{x}}$ then
       there are no initial states ``near'' $\bar{\vec{x}}$ that are indistinguishable from
       it and the system is said locally observable in $\bar{\vec{x}}$;
     \item[b.]If $\text{dim}(< \Delta|\Omega_0 >) = d < n$ in a neighbourhood of $\bar{\vec{x}}$ then
@@ -78,8 +82,8 @@
   \end{theorem}
 \end{frame}
 
-\begin{frame}{Results}
-In order to evaluate the observability codistribution for the system under examination
+\begin{frame}{Observability codistribution \theory}
+In order to evaluate $< \mathrm{\Delta}|d\vec{h} >$
  the following filtration of codistributions
 \[
 \begin{cases}
@@ -88,23 +92,63 @@ In order to evaluate the observability codistribution for the system under exami
 \Omega_k &= \Omega_{k-1} + L_\Delta \Omega_{k-1}
 \end{cases}
 \]
-was performed using the Symbolic Math Toolbox from MATLAB until an integer $k$ was found such that
+is performed until an integer $k$ is found such that
 \[
 \mathrm{dim}(\Omega_{k}(\bar{\vec{x}})) = \mathrm{dim}(\Omega_{k + 1}(\bar{\vec{x}}))
 \]
 \end{frame}
 
-\begin{frame}{Results}
-It turns out that for all $\bar{\vec{x}} \in \mathcal{E}_{1}$
-\[
-\mathrm{dim} (<\mathrm{\Delta},d\vec{h}>) = 6 < n = 9
-\]
-but the codistribution is \alert{not} regular then the theorem cannot be applied.
+\begin{frame}{Observability codistribution \cubli}
+  \begin{exampleblock}{Observability codistribution for the Cubli}
+    Any given initial state in which the cubic frame is standing in the upright
+    configuration with \alert{non zero angular rates $\dot{\vec{\theta}}$} gives
+    \[
+    \mathrm{dim} (<\mathrm{\Delta} | d\vec{h}>) = n
+    \]
+    hence the system \alert{is locally observable} in those points.
+  \end{exampleblock}
+\end{frame}
 
-Conversely any given initial state in which the cubic frame is standing in the upright
-configuration with \alert{non zero angular rates} gives
-\[
-\mathrm{dim} (<\mathrm{\Delta},d\vec{h}>) = n
-\]
-hence the system \alert{is locally observable} in those points.    
+\begin{frame}{Example 1 \cubli}
+  Consider the initial state 
+  \[
+  \bar{\vec{x}} = 
+  \begin{bmatrix}
+    * & -\mathrm{atan}(\sqrt{2}/2) & \pi/4 & \bar{\dot{\vec{\theta}}} & 0 & 0 & 0
+  \end{bmatrix}\transpose
+  \]
+  It is physically reasonable that any initial state $\bar{\vec{x}} + \vec{\delta x}$ where
+  \[
+  \vec{\delta x} = \begin{bmatrix}
+    0 & \hdots & \dot{\vec{\delta \theta}} & \hdots & 0
+  \end{bmatrix}\transpose
+  \]
+  produce a different output.
+\end{frame}
+
+\begin{frame}{Example 2 \cubli}
+  Consider the initial state 
+  \[
+  \bar{\vec{x}} = 
+  \begin{bmatrix}
+    * & -\mathrm{atan}(\sqrt{2}/2) & \pi/4 & \bar{\dot{\vec{\theta}}} & 0 & 0 & 0
+  \end{bmatrix}\transpose
+  \]
+  Any initial state $\bar{\vec{x}} + \vec{\delta x}$ where
+  \[
+  \vec{\delta x} = \begin{bmatrix}
+    0 & \hdots & \dot{\vec{\delta q}}_{wheels}
+  \end{bmatrix}\transpose
+  \]
+  produce a different output.
+\end{frame}
+
+\begin{frame}{Observability codistribution \cubli}
+  \begin{exampleblock}{Observability codistribution for the Cubli \hfill $\bar{\vec{x}} \in \mathcal{E}_{1}$}
+    Using the Symbolic Math Toolbox from MATLAB it turns out that for all $\bar{\vec{x}} \in \mathcal{E}_{1}$
+    \[
+    \mathrm{dim} (<\mathrm{\Delta} | d\vec{h}>) = 6 < n = 9
+    \]
+    but the codistribution is \alert{not} regular then the theorem \alert{cannot} be applied.
+  \end{exampleblock}
 \end{frame}

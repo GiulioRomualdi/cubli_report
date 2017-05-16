@@ -27,7 +27,8 @@
 \end{frame}
 
 \begin{frame}{Notation \footnote[frame]{All quantities expressed in $\{C\}$}}
-  \begin{columns}[t]
+  In the follwing this notation will be used
+  \begin{columns}
     \begin{column}{0.5\textwidth}
       \begin{block}{Velocities}
         \begin{itemize}
@@ -42,8 +43,10 @@
       \begin{block}{Inertial quantities}
         \begin{itemize}
         \item[-] $m_c$: cubic frame mass
-        \item[-] $m_i$: i-th flywheels mass
-        \item[-] $\prescript{c}{}{\mathfrak{J}}_{G_{c}}$: cubic frame inertia matrix of the 
+        \item[-] $m_i$: i-th flywheel mass
+        \item[-] $\prescript{c}{}{\vec{G}}_{c}$: cubic frame CoM
+        \item[-] $\prescript{c}{}{\vec{G}}_{i}$: i-th flywheel CoM 
+        \item[-] $\prescript{c}{}{\mathfrak{J}}_{G_{c}}$: cubic frame inertia matrix
         \item[-] $\prescript{c}{}{\mathfrak{J}}_{G_{i}}$: i-th flywheel inertia matrix
         \end{itemize}
       \end{block}
@@ -51,50 +54,50 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Inertia matrices and parameters}
+\begin{frame}[shrink = 10]{Inertia matrices and parameters}
   \begin{columns}
     \begin{column}{0.55\textwidth}
       \begin{block}{Inertia matrices}
         \vskip-0.1in
-      \[
-  \begin{split}
-    &\prescript{c}{}{\mathfrak{J}}_{G_{x}} = 
-    \left[
-      \begin{smallmatrix}
-        \frac{m r^2}{2} & 0 & 0\\
-      0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}  & 0\\
-      0 & 0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}
-      \end{smallmatrix}
-      \right]\\
-    &\prescript{c}{}{\mathfrak{J}}_{G_{y}} = 
-    \left[
-    \begin{smallmatrix}
-      \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0 & 0\\
-      0 & \frac{m r^2}{2} & 0\\
-      0 & 0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}
-    \end{smallmatrix}
-    \right] \\
-    &\prescript{c}{}{\mathfrak{J}}_{G_{z}} = 
-    \left[
-      \begin{smallmatrix}
-        \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0 & 0\\
-        0 & \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0\\
-      0 & 0 & \frac{m r^2}{2}
-      \end{smallmatrix}
-      \right]
-    \\
-    &\prescript{c}{}{\mathfrak{J}}_{G_{c}} = 
-    \left[
-      \begin{smallmatrix}
-      \frac{m_c a^2}{6} & 0 & 0\\
-      0 & \frac{m_c a^2}{6} & 0\\
-      0 & 0 & \frac{m_c a^2}{6}
-    \end{smallmatrix}
-    \right]
-  \end{split}
-  \] 
-  \end{block}
-  \end{column}
+        \[
+        \begin{split}
+          &\prescript{c}{}{\mathfrak{J}}_{G_{x}} = 
+          \left[
+            \begin{smallmatrix}
+              \frac{m r^2}{2} & 0 & 0\\
+              0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}  & 0\\
+              0 & 0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}
+            \end{smallmatrix}
+            \right]\\
+          &\prescript{c}{}{\mathfrak{J}}_{G_{y}} = 
+          \left[
+            \begin{smallmatrix}
+              \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0 & 0\\
+              0 & \frac{m r^2}{2} & 0\\
+              0 & 0 & \frac{m\left(h^2 + 3 r^2 \right)}{12}
+            \end{smallmatrix}
+            \right] \\
+          &\prescript{c}{}{\mathfrak{J}}_{G_{z}} = 
+          \left[
+            \begin{smallmatrix}
+              \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0 & 0\\
+              0 & \frac{m\left(h^2 + 3 r^2 \right)}{12} & 0\\
+              0 & 0 & \frac{m r^2}{2}
+            \end{smallmatrix}
+            \right]
+          \\
+          &\prescript{c}{}{\mathfrak{J}}_{G_{c}} = 
+          \left[
+            \begin{smallmatrix}
+              \frac{m_c a^2}{6} & 0 & 0\\
+              0 & \frac{m_c a^2}{6} & 0\\
+              0 & 0 & \frac{m_c a^2}{6}
+            \end{smallmatrix}
+            \right]
+        \end{split}
+        \] 
+      \end{block}
+    \end{column}
     \begin{column}{0.5\textwidth}
       \begin{block}{Parameters}
         \begin{itemize}
@@ -184,7 +187,12 @@
   \[
   B(\vec{q}) \ddot{\vec{q}} + C(\vec{q}, \dot{\vec{q}}) \dot{\vec{q}} + \vec{G}(\vec{q}) = \vec{Q}
   \]
-  \begin{block}{Joint space inertia matrix $B(\vec{q})$}
+  
+  \begin{block}{Color code}
+    \centering
+    \cubicFrame{Cubic frame} $\quad$ \qx{Fly wheel x} $\quad$  \qy{Fly wheel y} $\quad$ \qz{Fly wheel z} 
+  \end{block}
+    \begin{block}{Joint space inertia matrix $B(\vec{q})$}
     \[
     \begin{split}
       B(\vec{q}) &= \cubicFrame{m_c \prescript{c}{}{J}_{\omega}\transpose \prescript{c}{}{\unitvec{G}}_{c} \transpose  \prescript{c}{}{\unitvec{G}}_{c} \prescript{c}{}{J}_{\omega}} + \cubicFrame{\prescript{c}{}{J}_{\omega}\transpose  \prescript{c}{}{\mathfrak{J}}_{G_{c}} \prescript{c}{}{J}_{\omega}} + 
@@ -267,23 +275,23 @@
 
 \begin{frame}{Equations in control affine form}
   \begin{block}{State space vector}
-  \[
-  \tilde{\vec{x}} =
-  \begin{bmatrix}
-    \tilde{\vec{x}}_1\transpose & \tilde{\vec{x}}_2\transpose
-  \end{bmatrix}\transpose
-  \]
-  \[
-  \tilde{\vec{x}}_1 = 
-  \begin{bmatrix}
-    \theta_1 & \theta_2 & \theta_3 & q_x & q_y & q_z
-  \end{bmatrix}
-  \enspace
-  \tilde{\vec{x}}_2 = 
-  \begin{bmatrix}
-    \dot{\theta}_1 & \dot{\theta}_2 & \dot{\theta}_3 & \dot{q}_x & \dot{q}_y & \dot{q}_z
-  \end{bmatrix}
-  \]
+    \[
+    \tilde{\vec{x}} =
+    \begin{bmatrix}
+      \tilde{\vec{x}}_1\transpose & \tilde{\vec{x}}_2\transpose
+    \end{bmatrix}\transpose
+    \]
+    \[
+    \tilde{\vec{x}}_1 = 
+    \begin{bmatrix}
+      \theta_1 & \theta_2 & \theta_3 & q_x & q_y & q_z
+    \end{bmatrix}
+    \enspace
+    \tilde{\vec{x}}_2 = 
+    \begin{bmatrix}
+      \dot{\theta}_1 & \dot{\theta}_2 & \dot{\theta}_3 & \dot{q}_x & \dot{q}_y & \dot{q}_z
+    \end{bmatrix}
+    \]
   \end{block}
   \[
   \begin{split}
@@ -333,8 +341,10 @@
   \]
   where
   \[
-  g(\vec{x}) = \left(B(\theta_2,\theta_3) ^ {-1}\right)_{(:, 4:6)}
+  g(\vec{x}) = \left(B(\alert{\theta_2,\theta_3}) ^ {-1}\right)_{(:, 4:6)}
   \]
+  and $\vec{f}(\vec{x})$ do \alert{not} depend on $\theta_1$
+
 \end{frame}
 
 \begin{frame}[shrink = 30]{Equlibrium points}
@@ -342,25 +352,25 @@
     \includegraphics[scale=0.4]{cubli_equilibria}
   \end{center}
   \begin{block}{Upright equilibria (unstable)}
-  \[
-  \mathcal{E}_{1} = \left\{ \vec{x} \mid \theta_1 \in [-\pi, \pi),\enspace \theta_2 = -\mathrm{atan}\frac{\sqrt{2}}{2},\enspace
-   \theta_3 = \frac{\pi}{4},\enspace
-    \vec{\dot{\theta}} = \vec{0},\enspace
-    \vec{\dot{q}}_{wheels} = \vec{0},\enspace
-    \vec{u} = \vec{0}
-    \right\}
-   \]
+    \[
+    \mathcal{E}_{1} = \left\{ \vec{x} \mid \theta_1 \in [-\pi, \pi),\enspace \theta_2 = -\mathrm{atan}\frac{\sqrt{2}}{2},\enspace
+      \theta_3 = \frac{\pi}{4},\enspace
+      \vec{\dot{\theta}} = \vec{0},\enspace
+      \vec{\dot{q}}_{wheels} = \vec{0},\enspace
+      \vec{u} = \vec{0}
+      \right\}
+      \]
   \end{block}
   \begin{block}{Hanging equilibria (stable)}
     \[
     \mathcal{E}_{2} = \left\{
     \vec{x} \mid \theta_1 \in [-\pi, \pi),\enspace
       \theta_2 = \mathrm{atan}\frac{\sqrt{2}}{2},\enspace
-    \theta_3 = -\frac{3}{4} \pi,\enspace
-    \vec{\dot{\theta}} = \vec{0},\enspace
-    \vec{\dot{q}}_{wheels} = \vec{0},\enspace
-    \vec{u} = \vec{0}
-    \right\}
-    \]
+      \theta_3 = -\frac{3}{4} \pi,\enspace
+      \vec{\dot{\theta}} = \vec{0},\enspace
+      \vec{\dot{q}}_{wheels} = \vec{0},\enspace
+      \vec{u} = \vec{0}
+      \right\}
+      \]
   \end{block}
 \end{frame}
