@@ -117,13 +117,24 @@ is performed until an integer $k$ is found such that
     * & -\mathrm{atan}(\sqrt{2}/2) & \pi/4 & \bar{\dot{\vec{\theta}}} & 0 & 0 & 0
   \end{bmatrix}\transpose
   \]
-  It is physically reasonable that any initial state $\bar{\vec{x}} + \vec{\delta x}$ where
+  It is physically reasonable that an initial state $\bar{\vec{x}} + \vec{\delta x}$ where
   \[
   \vec{\delta x} = \begin{bmatrix}
-    0 & \hdots & \dot{\vec{\delta \theta}} & \hdots & 0
+    0 & \hdots & \vec{\delta}\dot{\vec{\theta}} & \hdots & 0
   \end{bmatrix}\transpose
   \]
-  produce a different output.
+  produces a different output.
+  \begin{columns}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dtheta1}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dtheta2}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dtheta3}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Example 2 \cubli}
@@ -134,13 +145,24 @@ is performed until an integer $k$ is found such that
     * & -\mathrm{atan}(\sqrt{2}/2) & \pi/4 & \bar{\dot{\vec{\theta}}} & 0 & 0 & 0
   \end{bmatrix}\transpose
   \]
-  Any initial state $\bar{\vec{x}} + \vec{\delta x}$ where
+  An initial state $\bar{\vec{x}} + \vec{\delta x}$ where
   \[
   \vec{\delta x} = \begin{bmatrix}
-    0 & \hdots & \dot{\vec{\delta q}}_{wheels}
+    0 & \hdots & \vec{\delta}\dot{\vec{q}}_{wheels}
   \end{bmatrix}\transpose
   \]
-  produce a different output.
+  produces a different output.
+  \begin{columns}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dq1}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dq2}
+    \end{column}
+    \begin{column}{0.37\textwidth}
+      \includegraphics[width=\columnwidth]{obs_dq3}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Observability codistribution \cubli}
