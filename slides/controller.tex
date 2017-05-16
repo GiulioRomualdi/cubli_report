@@ -311,7 +311,7 @@
 \begin{frame}{Control using different Euler parametrization}
   The attitude controller was developed using two different parametrization of the $R_{SC}$ matrix
   \begin{itemize}
-  \item[-] Euler ZYX:  
+  \item[-] Euler \color{dgreen}{ZYX}:  
     \begin{itemize}
     \item[-] the desired trajectory is easily specified since the yaw motion \alert{only} depends on $\theta_1$
     \end{itemize}
@@ -383,7 +383,7 @@
   \includegraphics[scale=0.62]{simulation_lqr_velocities}
 \end{frame}
 
-\begin{frame}{Yaw motion while balancing on a corner (continued)}
+\begin{frame}{Control law \hfill \color{dgreen}{ZYX}}
   A suitable control law $\vec{v}$ is
   {\small
     \[
@@ -407,7 +407,7 @@
   \]
 \end{frame}
 
-\begin{frame}{Results}
+\begin{frame}{Results \hfill \color{dgreen}{ZYX}}
   \[\theta_1^{des}(0) = \SI{0}{\degree} \rightarrow \theta_1^{des}(2) = \SI{100}{\degree}
   \rightarrow \theta_1^{des}(4) = \SI{0}{\degree}\]
   \[k_p = 10 \enspace k_d = 0.1\]
@@ -423,7 +423,7 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Results (continued)}
+\begin{frame}{Results (continued) \hfill \color{dgreen}{ZYX}}
   The flywheel velocities $\vec{\eta}(t)$ which are
   solution to the differential equation
   \[
@@ -438,7 +438,7 @@
   \includegraphics[scale=0.4]{fly_wheel2}
 \end{frame}
 
-\begin{frame}{Results (continued)}
+\begin{frame}{Results (continued) \hfill \color{dgreen}{ZYX}}
   Non-zero initial conditions $\vec{\eta}(0)$ produce, in general,
   non-zero flywheel velocities at the time $t_f$ in which the
   rotation is completed.
@@ -449,20 +449,20 @@
   dictate the conservation of the flywheels velocities.
 \end{frame}
 
-\begin{frame}{Use of an alternative Euler parametrization}
-  Using a different parametrization of the rotation matrix
-  \[
-  R_{SC}(\vec{\theta}) = R_x(\theta_1)R_y(\theta_2)R_z(\theta_3)
-  \]
-  the same results apply but the desired yaw motion requires to specify
-  all three angles using Slerp.
-  \par
-  However in this setup the unobservable part of the closed loop system, i.e.
-  the flywheels velocities, are not zero at the end of rotation and are conserved
-  as dictated by the zero dynamics of the system that is independent of the parametrization
-  chosen for $R_{SC}$.
-  A possible solution is to switch to a LQR based control after the rotation is completed to slow down the flywheels.
-  \par
-  This approach works if the flywheels velocities before the switch are not too high.
-\end{frame}
+%% \begin{frame}{Use of an alternative Euler parametrization}
+%%   Using a different parametrization of the rotation matrix
+%%   \[
+%%   R_{SC}(\vec{\theta}) = R_x(\theta_1)R_y(\theta_2)R_z(\theta_3)
+%%   \]
+%%   the same results apply but the desired yaw motion requires to specify
+%%   all three angles using Slerp.
+%%   \par
+%%   However in this setup the unobservable part of the closed loop system, i.e.
+%%   the flywheels velocities, are not zero at the end of rotation and are conserved
+%%   as dictated by the zero dynamics of the system that is independent of the parametrization
+%%   chosen for $R_{SC}$.
+%%   A possible solution is to switch to a LQR based control after the rotation is completed to slow down the flywheels.
+%%   \par
+%%   This approach works if the flywheels velocities before the switch are not too high.
+%% \end{frame}
 
