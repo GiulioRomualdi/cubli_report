@@ -182,6 +182,7 @@
   \[
   A(\vec{x}) = \left(B(\theta_2,\theta_3) ^ {-1}\right)_{(1:3, 4:6)}
   \]
+  is nonsingular everywhere
 \end{frame}
 
 \begin{frame}{Existence of a vector relative degree (continued)}
@@ -190,7 +191,7 @@
   \[
   |A| \ne 0 \enspace \forall \theta_2, \theta_3 \implies \{r_1, r_2, r_3\} = \{2,2,2\} \enspace \forall \vec{x}
   \]
-  The resulting standard noninteractive feedback is
+  The resulting standard noninteracting feedback is
   \[
   \vec{u}_{NIC} = -\left(B(\theta_2,\theta_3) ^ {-1}\right)_{(1:3, 4:6)}^{-1}
   (\vec{f}_{(4:6)}(\vec{x}) - \vec{v} )
@@ -240,6 +241,50 @@
   \]
 \end{frame}
 
+\begin{frame}{Zero Dynamics}
+  With reference to the normal form in coordinates $[\vec{\xi}\transpose,\vec{\eta}\transpose]$
+  the input 
+  \[
+  \vec{u} = -A(\vec{0},\vec{\eta}(t))^{-1} \vec{b}(\vec{0},\vec{\eta}(t))
+  \]
+  determines the zero dynamics of the system
+  \[
+  \begin{cases}
+    &\dot{\vec{\eta}}(t) = \vec{q}_{0}(\vec{0},\vec{\eta}(t))\\
+    &\vec{\eta}(0) = \vec{\eta}_{0}\\
+  \end{cases}
+  \]
+  where
+  \[
+  \vec{q}_{0}(\vec{\xi},\vec{\eta}) = \vec{q}(\vec{\xi},\vec{\eta}) - \vec{p}
+  (\vec{\xi},\vec{\eta})A(\vec{0},\vec{\eta}(t))^{-1} \vec{b}(\vec{0},\vec{\eta}(t))
+  \]
+\end{frame}
+
+\begin{frame}{Zero Dynamics (continued)}
+  For the system under examination
+  \[
+  \begin{split}
+    \dot{\vec{\eta}}(t) &= \vec{f}(\vec{x}_{0}(t))_{(7:9)} - \vec{p}
+    (\vec{x}_{0}(t))A(\vec{x}_{0}(t))^{-1}  \vec{f}(\vec{x}_{0}(t))_{(4:6)}\\
+    &\equiv \vec{0} - \vec{p}
+    (\vec{x}_{0}(t))A(\vec{x}_{0}(t))^{-1}  \vec{0}\\
+    &\equiv \vec{0}
+  \end{split}
+  \]
+  where $\vec{x}_{0}(t)\transpose =
+  \begin{bmatrix}
+    0 & -\mathrm{atan}\frac{\sqrt{2}}{2} & \frac{\pi}{4} & 0 & 0 & 0 &
+    \vec{\eta}(t)
+  \end{bmatrix}\transpose
+  $
+  \par
+  Hence when the system is still in the upright position the initial flywheel velocites
+  are conserved.
+  \par
+  The same results apply if $\vec{x}_{0}(t)_{(1)} \in [-\pi, \pi[$ due to symmetry of the system.
+\end{frame}
+
 \begin{frame}{Yaw motion while balancing on a corner}
   Consider a rotation about the $z$ axis of the inertial
   reference frame $\{S\}$ while the balance on one of the corner is maintained
@@ -247,9 +292,9 @@
     \includemedia[
       activate=pageopen,
       width=200pt,height=200pt,
-      addresource=videos/cubli_yaw_noerr.mp4,
+      addresource=videos/cubli_yaw_noerr_youtube.mp4,
       flashvars={%
-        src=videos/cubli_yaw_noerr.mp4
+        src=videos/cubli_yaw_noerr_youtube.mp4
         &scaleMode=stretch&autoPlay=true&loop=true
         &hideBar=true}
     ]{}{StrobeMediaPlayback.swf}
@@ -311,6 +356,17 @@
   \includegraphics[scale=0.4]{fly_wheel2}
 \end{frame}
 
+\begin{frame}{Results (continued)}
+  Non-zero initial conditions $\vec{\eta}(0)$ produce, in general,
+  non-zero flywheel velocities at the time $t_f$ in which the
+  rotation is completed.
+  \par
+  (FIGURE - EXAMPLE)
+  \par
+  Since the output is ``zeroed'' at $t=t_f$ the zero dynamics of the system
+  dictate the conservation of the flywheels velocities.
+\end{frame}
+
 \begin{frame}{Use of an alternative Euler parametrization}
   Using a different parametrization of the rotation matrix
   \[
@@ -320,8 +376,10 @@
   all three angles using Slerp.
   \par
   However in this setup the unobservable part of the closed loop system, i.e.
-  the flywheels velocities, does not tend to zero. A possible solution is to switch
-  to a LQR based control after the rotation is completed to slow down the flywheels.
+  the flywheels velocities, are not zero at the end of rotation and are conserved
+  as dictated by the zero dynamics of the system that is independent of the parametrization
+  chosen for $R_{SC}$.
+  A possible solution is to switch to a LQR based control after the rotation is completed to slow down the flywheels.
   \par
   This approach works if the flywheels velocities before the switch are not too high.
 \end{frame}
