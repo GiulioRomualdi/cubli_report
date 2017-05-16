@@ -1,6 +1,6 @@
 \section{Noninteracting controller}
 
-\begin{frame}[shrink=10]{Theory of Noniteracting control}
+\begin{frame}[shrink=10]{Noniteracting control \theory}
   Consider a nonlinear control affine system with $m$ inputs and $m$ outputs
   \[
   \vec{\dot{x}} = \vec{f}(\vec{x}) + \sum\limits_{i=1}^{\alert{m}} \vec{g}_{i}(\vec{x}) u_{i}
@@ -24,9 +24,9 @@
   only by the corresponding input $v_i$ and not by the others.
 \end{frame}
 
-\begin{frame}{Theory of Noniteracting control (continued)}
+\begin{frame}{Noniteracting control (continued) \theory}
   Suppose that the system has a vector relative degree $\{r_1, \hdots, r_m\}$ at $\vec{x}^{0}$ hence it admits
-  a \emph{normal form} locally around $\vec{x}^{0}$
+  a \alert{normal form} locally around $\vec{x}^{0}$
   \begin{columns}[t]
     \begin{column}{0.5\textwidth}
       \[
@@ -68,32 +68,36 @@
   with $A(\vec{x})$ nonsingular at $\vec{x}^{0}$
 \end{frame}
 
-\begin{frame}{Theory of Noniteracting control (continued)}
+\begin{frame}[shrink = 10]{Noniteracting control (continued) \theory}
   \begin{block}{Proposition (Isidori)}
     Suppose
-    \[
-    L{\vec{g}_j}L_{\vec{f}}^{k}h_{i}(\vec{x}) = 0 \enspace \forall \vec{x} \in B_{\delta}(\vec{x}^0)
-    \]
+    \begin{equation}\label{eq:isidori1}
+      L{\vec{g}_j}L_{\vec{f}}^{k}h_{i}(\vec{x}) = 0 \enspace \forall \vec{x} \in B_{\delta}(\vec{x}^0)
+    \end{equation}
     \[
     1 \le j \le m, \enspace 1 \le i \le m, \enspace k < r_i-1
     \]
     and
-    \[
-    \begin{bmatrix}
-      L_{\vec{g}_1}L_{\vec{f}}^{r_{i-1}}h_i(\vec{x}^{0}) \enspace \hdots \enspace L_{\vec{g}_m}L_{\vec{f}}^{r_i-1}h_i(\vec{x}^{0})
-    \end{bmatrix}
+    \begin{equation}\label{eq:isidori2}
+      \begin{bmatrix}
+        L_{\vec{g}_1}L_{\vec{f}}^{r_{i-1}}h_i(\vec{x}^{0}) \enspace \hdots \enspace L_{\vec{g}_m}L_{\vec{f}}^{r_i-1}h_i(\vec{x}^{0})
+      \end{bmatrix}
     \ne
     \begin{bmatrix}
       0 \enspace \hdots \enspace 0
     \end{bmatrix}
     \enspace 1 \le i \le m
-    \]
-    Then the noninteracting control problem is solvable iff the matrix $A(\vec{x}^{0})$ is nonsingular,
+    \end{equation}
+    Then the noninteracting control problem is solvable iff the matrix 
+    \begin{equation}\label{eq:isidori3}
+      A(\vec{x}^{0}) \text{ is nonsingular}
+    \end{equation}
     i.e. if the system has a vector relative degree $\{r_1, \hdots, r_m\}$ at $\vec{x}^{0}$
   \end{block}
+  \alert{It should be noted that (\ref{eq:isidori3}) $\implies$ (\ref{eq:isidori2})}
 \end{frame}
 
-\begin{frame}{Theory of Noniteracting control (continued)}
+\begin{frame}{Noniteracting control (continued) \theory}
   Indeed the regular static feedback
   \[
   \vec{u} = -A^{-1}(\vec{\xi},\vec{\eta})\vec{b}(\vec{\xi},\vec{\eta}) + A^{-1}(\vec{\xi},\vec{\eta})\vec{v}
@@ -128,8 +132,8 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Application of the Noniteracting control}
-  For the system under examination
+\begin{frame}{Existence of a vector relative degree \cubli}
+  For the cubli system
   \[
   \begin{cases}
     \begin{split}
@@ -160,10 +164,11 @@
   g_{j}^{i} = 0
   \qquad 1 \le j \le 3, \enspace 1 \le i \le 3
   \]
+  \qy{This verifies the condition (1) of the proposition from Isidori}
 
 \end{frame}
 
-\begin{frame}{Existence of a vector relative degree}
+\begin{frame}{Existence of a vector relative degree \cubli}
   Also 
   \[
   \frac{\mathrm{d}^{2}}{\mathrm{d}t^{2}}\vec{y} = 
@@ -182,10 +187,12 @@
   \[
   A(\vec{x}) = \left(B(\theta_2,\theta_3) ^ {-1}\right)_{(1:3, 4:6)}
   \]
-  is nonsingular everywhere
+  is \alert{nonsingular} everywhere
+
+  \qy{This verifies the condition (3) of the proposition from Isidori}
 \end{frame}
 
-\begin{frame}{Existence of a vector relative degree (continued)}
+\begin{frame}{Existence of a vector relative degree \cubli}
   \centering
   \includegraphics[scale=0.4]{detA.png}
   \[
@@ -198,8 +205,8 @@
   \]
 \end{frame}
 
-\begin{frame}[shrink=10]{Unobservable part of the system}
-  The unobservable part of the system can be obtained by completely specifying
+\begin{frame}[shrink=10]{Unobservable part of the system \cubli}
+  The \alert{unobservable part} of the system is obtained by completely specifying
   the coordinate transformation $\Phi$
   \[
   \vec{y} =
@@ -241,13 +248,13 @@
   \]
 \end{frame}
 
-\begin{frame}{Zero Dynamics}
+\begin{frame}{Zero Dynamics \theory}
   With reference to the normal form in coordinates $[\vec{\xi}\transpose,\vec{\eta}\transpose]$
   the input 
   \[
   \vec{u} = -A(\vec{0},\vec{\eta}(t))^{-1} \vec{b}(\vec{0},\vec{\eta}(t))
   \]
-  determines the zero dynamics of the system
+  determines the \alert{zero dynamics} of the system
   \[
   \begin{cases}
     &\dot{\vec{\eta}}(t) = \vec{q}_{0}(\vec{0},\vec{\eta}(t))\\
@@ -261,7 +268,7 @@
   \]
 \end{frame}
 
-\begin{frame}{Zero Dynamics (continued)}
+\begin{frame}{Zero Dynamics \cubli}
   For the system under examination
   \[
   \begin{split}
@@ -272,7 +279,7 @@
     &\equiv \vec{0}
   \end{split}
   \]
-  where $\vec{x}_{0}(t)\transpose =
+  where $\vec{x}_{0}(t)=
   \begin{bmatrix}
     0 & -\mathrm{atan}\frac{\sqrt{2}}{2} & \frac{\pi}{4} & 0 & 0 & 0 &
     \vec{\eta}(t)
@@ -285,8 +292,8 @@
   The same results apply if $\vec{x}_{0}(t)_{(1)} \in [-\pi, \pi[$ due to symmetry of the system.
 \end{frame}
 
-\begin{frame}{Yaw motion while balancing on a corner}
-  Consider a rotation about the $z$ axis of the inertial
+\begin{frame}{Control objectives}
+  Perform a rotation about the $z$ axis of the inertial
   reference frame $\{S\}$ while the balance on one of the corner is maintained
   \begin{center}
     \includemedia[
@@ -299,6 +306,81 @@
         &hideBar=true}
     ]{}{StrobeMediaPlayback.swf}
   \end{center}
+\end{frame}
+
+\begin{frame}{Control using different Euler parametrization}
+  The attitude controller was developed using two different parametrization of the $R_{SC}$ matrix
+  \begin{itemize}
+  \item[-] Euler ZYX:  
+    \begin{itemize}
+    \item[-] the desired trajectory is easily specified since the yaw motion \alert{only} depends on $\theta_1$
+    \end{itemize}
+  \item[-] Euler \color{red}{XYZ}:
+    \begin{itemize}
+    \item[-] the desired trajectory is more complex sice the yaw motion depends on  \alert{all} three angles
+    \item[-] it allows to develop some useful propositions about the zero dynamics of the system
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Control law \hfill \color{red}{XYZ}}
+  A suitable control law $\vec{v}$ is
+  {\small
+    \[
+    v_i(t) = \ddot{\theta}_i^{des}(t) + k_d(\dot{\theta}_i^{des}(t) - \dot{\theta}_i(t)) + k_p (\theta_i^{des}(t) - \theta_i(t))
+    \]
+  }
+  where $\theta_i^{des}(t)$ is evaluated using a Spherical linear interpolation between the initial and final poses of the cubic frame
+  \par
+  The unobservable part of the closed loop system (the flywheels velocities) subjected to the input $\vec{v}$
+  \[
+  \dot{\vec{\eta}} =
+  \hat{\vec{q}}(\vec{x}) + \hat{\vec{p}}(\theta_{2},\theta_{3})\vec{v}
+  \]
+  is \alert{not zero} at the end of rotation and is conserved
+  as dictated by the zero dynamics of the system.
+  A possible solution is to switch to a \alert{LQR} based control to slow down the flywheels.
+  \par
+  This approach works if the flywheels velocities before the switch are ``not too high''.
+\end{frame}
+
+\begin{frame}{Results \hfill \color{red}{XYZ}}
+  \vskip0.1in
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{itemize}
+      \item[-]$k_p = 2500$, $k_d = 50$
+      \item[-]rotation of $\SI{180}{\degree}$ in $\SI{4}{\second}$
+      \item[-]\alert{LQR control actived at $t = \SI{5}{\second}$}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{error_lqr}
+    \end{column}
+  \end{columns}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{fly_wheel_lqr}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \includegraphics[width=\columnwidth]{input_lqr}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Results \hfill \color{red}{XYZ}}
+  The outcome of the switch to the LQR controller
+  is shown for several angles of rotation and several durations of the movement
+  \par
+  \centering
+  \includegraphics[scale=0.46]{simulation_lqr}
+\end{frame}
+
+\begin{frame}{Results \hfill \color{red}{XYZ}}
+  The failures happen when the flywheel velocities are too high as expected
+  \par
+  \centering
+  \includegraphics[scale=0.62]{simulation_lqr_velocities}
 \end{frame}
 
 \begin{frame}{Yaw motion while balancing on a corner (continued)}
@@ -382,57 +464,5 @@
   A possible solution is to switch to a LQR based control after the rotation is completed to slow down the flywheels.
   \par
   This approach works if the flywheels velocities before the switch are not too high.
-\end{frame}
-
-\begin{frame}{Results}
-  \vskip0.1in
-  \begin{columns}
-    \begin{column}{0.45\textwidth}
-      \begin{itemize}
-      \item[-]$k_p = 2500$, $k_d = 50$
-      \item[-]rotation of $\SI{180}{\degree}$ in $\SI{4}{\second}$
-      \item[-]LQR control actived at $t = \SI{5}{\second}$ 
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \includegraphics[width=\columnwidth]{error_lqr}
-    \end{column}
-  \end{columns}
-  \begin{columns}
-    \begin{column}{0.45\textwidth}
-      \includegraphics[width=\columnwidth]{fly_wheel_lqr}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \includegraphics[width=\columnwidth]{input_lqr}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-%% \begin{frame}{Results ($k_p = 2500$, $k_d = 50$)}
-%%   \centering
-%%   \includegraphics[scale=0.4]{error_lqr}
-%%   \includegraphics[scale=0.4]{input_lqr}
-%% \end{frame}
-
-%% \begin{frame}{Results}
-%%   The LQR control is actived at $t = \SI{5}{\second}$
-%%   \par
-%%   \centering
-%%   \includegraphics[scale=0.6]{fly_wheel_lqr}
-%% \end{frame}
-
-\begin{frame}{Results}
-  The outcome of the switch to the LQR controller
-  is shown for several angles of rotation and several durations of the movement
-  \par
-  \centering
-  \includegraphics[scale=0.46]{simulation_lqr}
-\end{frame}
-
-\begin{frame}{Results}
-  The failures happen when the flywheel velocities are too high as expected
-  \par
-  \centering
-  \includegraphics[scale=0.62]{simulation_lqr_velocities}
 \end{frame}
 
